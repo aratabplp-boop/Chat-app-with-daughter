@@ -1,5 +1,4 @@
-#　1.タイトル
-- 一緒に勉強アプリ(This app is only used by Asako and Arata.)
+#　1.タイトル 一緒に勉強アプリ(This app is only used by Asako and Arata.)
 
 ## 2.課題内容（どんな作品か）
 - 娘とリアルタイムで勉強時間を競い、励ましあえるアプリ
