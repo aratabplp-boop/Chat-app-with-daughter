@@ -1,0 +1,203 @@
+/* 全タブは非表示 */
+.tab_content {
+  display: none;
+}
+
+/* activeのタブだけ表示 */
+.tab_content.active {
+  display: block;
+}
+/* 重複定義の整理（同じ .tab_nav が2回あるので1つに統一） */
+.tab_nav {
+  display: flex;
+  gap: 8px;
+}
+
+/*  　　　　　　　　　　　*/
+/* ホームのデザインゾーン */
+/*  　　　　　　　　　　　*/
+
+
+#home {
+  font-family: 'Kiwi Maru', serif;
+  font-weight: 500; /* Mediumウェイトを指定 */
+  background: #e6e0f8; /* ライラック */
+  color: #4a3f35; /* グレイッシュブラウン */
+  padding: 12px 24px;
+ 
+}
+#home .app_title {
+font-size: 18px;
+}
+#home .user1_name,
+#home .user2_name {
+  margin-top: 4px;   /* 上余白を詰める */
+  margin-bottom: 4px; /* 下余白も詰めたいなら追加 */
+}
+
+#home h3 {
+  margin: 0;        /* 上下余白をゼロに */
+  padding: 0;       /* パディングもゼロに */
+  font-size: 16px;  /* 必要なら文字サイズ調整 */
+}
+
+#home .user_zone {
+  background: #fffde7; /* ごく薄いクリーム色 */
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+  height: auto;
+}
+
+/* モバイル (iPhone想定)*/
+#home {
+  max-width: 375px; /* iPhone標準幅を想定 */
+  margin: 0 auto;
+}
+
+
+/* PC用 */
+/* @media (min-width: 768px) {
+  #home {
+    display: flex;
+    gap: 20px;
+  }
+  #home .user_zone {
+    flex: 1;
+  }
+} */
+/* 
+#home .declare_area::before {
+  content: "今日の宣言";
+  display: block;
+  font-size: 1.0em;
+  font-weight: bold;
+  color: #90c8a0; /* ミントグリーン */
+  /* margin-bottom: 4px;
+} */
+.header_area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+#home .encourage_area::before {
+  content: "応援メッセ";
+  display: block;
+  font-size: 1.0em;
+  font-weight: bold;
+  color: #90c8a0;
+  margin-bottom: 4px;
+}
+#home .encourage_area {
+  background: #fff3cd;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+#home .btn_area {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2px;
+}
+textarea::placeholder {
+  color: #cecccc; /* 薄いグレー */
+  font-family: 'Kiwi Maru', serif;
+}
+
+/* ダッシュボード全体 */
+#dashboard {
+  font-family: 'Kiwi Maru', serif;
+  font-weight: 500;
+  background: #e6e0f8; /* ホームと同じライラック */
+  color: #4a3f35;      /* グレイッシュブラウン */
+  padding: 12px 24px;
+  max-width: 375px;    /* スマホ幅に合わせる */
+  margin: 0 auto;
+}
+
+/* タイトル */
+#dashboard .dashboard_title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+/* ユーザーごとの結果ゾーン */
+#dashboard .dashboard_user,
+#dashboard ._user {
+  background: #fffde7; /* ホームと同じ淡いクリーム */
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ユーザー名 */
+#dashboard h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* 各項目のテキスト */
+#dashboard p {
+  margin: 4px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* 宣言履歴タイトル */
+#dashboard h3 {
+  color: #90c8a0; /* ミントグリーンで見出しを統一 */
+}
+footer {
+  max-width: 375px;   /* Homeと同じ幅に */
+  margin: 0 auto;     /* 中央寄せ */
+  text-align: center; /* 中のテキストも中央寄せ */
+  background: #e6e0f8; /* Homeと同じライラック背景に */
+  font-size: 12px;
+  padding: 8px 24px;
+}
+
+/* 1) ボタンのリセット（必要なものだけ） */
+button.tab_btn {
+  appearance: none;         /* UAの外観を無効化 */
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  display: inline-flex;     /* あなたの元の意図に沿う */
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* 2) フォーカス・アクティブの過剰な見た目を弱める（all: unset は使わない） */
+button.tab_btn:focus,
+button.tab_btn:active {
+  outline: none;
+  box-shadow: none;
+  background: none;
+  border: none;
+}
+
+/* 3) アクティブの見た目（後勝ち・要素＋クラスで特異性を確保） */
+button.tab_btn.active {
+  font-weight: 700;
+  border-bottom: 2px solid #333;
+}
+
+/* 4) もし hover が競合しているなら穏やかな指定に */
+button.tab_btn:hover {
+  background-color: #eee;
+}

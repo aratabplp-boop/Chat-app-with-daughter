@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="./css/style.css">
+    <title>一緒に勉強アプリ</title>
+</head>
+
+<body>
+  <!-- ヘッダー -->
+<!-- <header id="appHeader">
+  <h1 id="appTitle">一緒に勉強アプリ</h1>
+</header> -->
+
+
+<div class="tabs">
+
+<!-- ホームタブ -->
+<div id="home" class="tab_content">
+  <div class="header_area">
+    <h2 class="app_title">一緒に勉強アプリ―Home</h2>
+    <nav>
+     <button class="tab_btn" data-target="home" type="button">ホーム</button>
+     <button class="tab_btn" data-target="dashboard" type="button">りれき</button>
+   </nav>
+  </div>
+ 
+
+  <!-- ユーザー1ゾーン -->
+  <div class="user_zone" id="user1Zone">
+    <h3 id="homeUser1Name" class ="user1_name">Asakoのスペース</h3>
+    <div class="input_area">
+    <textarea id="user1CommentInput" placeholder="宣言 or 応援メッセージ"></textarea><br>
+    </div>
+  
+    <div class="btn_area">
+     <button id="user1DeclareBtn">宣言</button>
+     <button id="user1EncourageBtn">応援</button>
+     <button id="user1StartBtn">スタート</button>
+     <button id="user1PauseBtn">ポーズ</button>
+     <button id="user1StopBtn">ストップ</button>
+    </div>
+    
+    <div  class="declare_area">
+     <div class="declare_title">今日の宣言</div>
+     <div id="user1CommentDisplay"></div>
+    </div>
+
+   <div id="user1StudyImageArea" class="study_image"></div>
+   <!-- <div class="button_area">
+
+   </div> -->
+
+    <div id="user1StudyTimeDisplay" class = "display_area"></div>
+    <div id="user1EncourageMessage" class="encourage_area"></div>
+  </div>
+
+  <hr>
+
+  <!-- ユーザー2ゾーン -->
+  <div class="user_zone" id="user2Zone">
+    <h3 id="homeUser2Name" class="user2_name">Arataのスペース</h3>
+    <div class="input_area">
+      <textarea id="user2CommentInput" placeholder="宣言 or 応援メッセージ"></textarea><br>
+    </div>
+    <div class="btn_area">
+      <button id="user2DeclareBtn">宣言</button>
+      <button id="user2EncourageBtn">応援</button>
+      <button id="user2StartBtn">スタート</button>
+      <button id="user2PauseBtn">ポーズ</button>
+      <button id="user2StopBtn">ストップ</button>
+    </div>
+    <div class="declare_area">
+      <div class="declare_title">今日の宣言</div>
+      <div id="user2CommentDisplay" ></div>
+    </div>
+   
+
+    <div id="user2StudyImageArea" class="study_image"></div>
+    <!-- <div class="button_area">
+ 
+    </div> -->
+
+    <div id="user2StudyTimeDisplay" class="display_area"></div>
+    <div id="user2EncourageMessage" class="encourage_area"></div>
+  </div>
+</div>
+
+
+<!-- ダッシュボードタブ -->
+<div id="dashboard" class="tab_content">
+
+   <div class="header_area">
+  <div class="dashboard_title">一緒に勉強アプリ-Rireki</div>
+   <nav>
+    <button class="tab_btn" data-target="home" type="button">ホーム</button>
+    <button class="tab_btn" data-target="dashboard" type="button">りれき</button>
+   </nav>
+   </div>
+ 
+
+  <!-- ユーザー1結果 -->
+  <div class="_user" id="dashboardUser1">
+    <h3 id="dashboardUser1Name">Asakoのスペース</h3>
+    <p>今日の学習時間: <span id="todayUser1Time"></span></p>
+    <p>最後の学習から: <span id="lastUser1Elapsed"></span></p>
+    <p>累積時間: <span id="totalUser1Time"></span></p>
+    <p>累積ポイント: <span id="totalUser1Points"></span></p>
+  </div>
+
+  <hr>
+
+  <!-- ユーザー2結果 -->
+  <div class="dashboard_user" id="dashboardUser2">
+    <h3 id="dashboardUser2Name">Arataのスペース</h3>
+    <p>今日の学習時間: <span id="todayUser2Time"></span></p>
+    <p>最後の学習から: <span id="lastUser2Elapsed"></span></p>
+    <p>累積時間: <span id="totalUser2Time"></span></p>
+    <p>累積ポイント: <span id="totalUser2Points"></span></p>
+  </div>
+  <hr>
+
+   <!-- 宣言履歴 -->
+  <h3>宣言履歴</h3>
+  <div id="declareHistory"></div>
+</div>
+
+</div>
+
+<footer id="appFooter" class ="footer">
+This app is only used by Asako and Arata.
+</footer>
+
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <!-- day.js -->
+     <script src="https://unpkg.com/dayjs/dayjs.min.js"></script>
+     <!-- Firebase連携 -->
+     <script type="module" src="./firebase.js"></script>
+     <!-- アプリ本体 -->
+     <script type="module" src="./script.js"></script>
+
+     
+<!-- Firebase連携 -->
+     <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+//  ↑Firestore.jsも追加
+
+
+
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+  
+    authDomain: "asako-app.firebaseapp.com",
+    projectId: "asako-app",
+    storageBucket: "asako-app.firebasestorage.app",
+    messagingSenderId: "255389737658",
+    appId: "1:255389737658:web:f10918cef5eb9dac545883"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig); 
+  const db = getFirestore(app);
+
+
+
+</script>
+</body>
+
+
+
+
+</html>
