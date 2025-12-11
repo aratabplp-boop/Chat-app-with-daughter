@@ -6,7 +6,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebas
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
 const firebaseConfig = {
-
+  
   authDomain: "asako-app.firebaseapp.com",
   projectId: "asako-app",
   storageBucket: "asako-app.firebasestorage.app",

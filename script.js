@@ -482,17 +482,17 @@ async function renderDashboard() {
 // 初回ロード＋リアルタイム更新
 // ===============================
 const sessionsRef = collection(db, "sessions");
-const recentSessionsQuery = query(sessionsRef, orderBy("createdAt", "desc"), limit(10));
+const recentSessionsQuery = query(sessionsRef, orderBy("createdAt", "desc"), limit(3));
 
 (async function() {
-  console.log("Firestoreからsessions最新10件取得開始...");
+  console.log("Firestoreからsessions最新3件取得開始...");
   const querySnapshot = await getDocs(recentSessionsQuery);
   console.log("初回取得: 件数", querySnapshot.size);
   renderDashboard();
 
   // リアルタイム更新（最新10件のみ監視）
   onSnapshot(recentSessionsQuery, (querySnapshot) => {
-    console.log("sessions最新10件更新検知。件数:", querySnapshot.size);
+    console.log("sessions最新3件更新検知。件数:", querySnapshot.size);
     renderDashboard();
   });
 })();
@@ -716,6 +716,8 @@ $("#user2EncourageBtn").click(async function () {
 const recentMessagesQuery = query(messagesRef,orderBy("timestamp","desc"), limit(10));
 
 onSnapshot(recentMessagesQuery,(snapshot)=>{
+   console.log("messages snapshot 発火:", snapshot.size);
+
   // 表示領域をクリア
   $("#user1CommentDisplay").empty();
   $("#user1EncourageMessage").empty();
